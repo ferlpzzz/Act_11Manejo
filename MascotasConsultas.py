@@ -52,7 +52,7 @@ def mostrar_mascotas():
             print(f"Codigo: {codigo} - Nombre: {datos['Nombre']} - Propietario: {datos['Nombre del propietario']}")
 
 def buscar_mascota_por_codigo():
-    codigo = input("Ingrese el codigo a buscar: ") #[cite: 1]
+    codigo = input("Ingrese el codigo a buscar: ") 
     mascotas = cargar_mascotas()
     
     if codigo in mascotas:
