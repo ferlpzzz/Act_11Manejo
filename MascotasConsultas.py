@@ -41,3 +41,25 @@ def registrar_mascota():
     
     guardar_mascotas(mascotas)
     print("Mascota guardada.")
+
+def mostrar_mascotas():
+    mascotas = cargar_mascotas()
+    
+    if len(mascotas) == 0:
+        print("No hay mascotas.")
+    else:
+        for codigo, datos in mascotas.items():
+            print(f"Codigo: {codigo} - Nombre: {datos['Nombre']} - Propietario: {datos['Nombre del propietario']}")
+
+def buscar_mascota_por_codigo():
+    codigo = input("Ingrese el codigo a buscar: ") #[cite: 1]
+    mascotas = cargar_mascotas()
+    
+    if codigo in mascotas:
+        datos = mascotas[codigo]
+        print(f"Nombre: {datos['Nombre']}")
+        print(f"Especie: {datos['Especie']}")
+        print(f"Propietario: {datos['Nombre del propietario']}")
+        print(f"Estado: {datos['Estado']}")
+    else:
+        print("Mascota no encontrada.")
