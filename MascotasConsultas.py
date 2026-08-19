@@ -63,3 +63,31 @@ def buscar_mascota_por_codigo():
         print(f"Estado: {datos['Estado']}")
     else:
         print("Mascota no encontrada.")
+
+def registrar_consulta():
+    mascotas = cargar_mascotas()
+    cod_mascota = input("Ingrese el codigo de mascota: ") 
+    
+    if cod_mascota not in mascotas:
+        print("La mascota no existe.")
+        return
+
+    cod_consulta = input("Codigo de consulta: ") 
+    fecha = input("Fecha: ") 
+    motivo = input("Motivo: ") 
+    diagnostico = input("Diagnostico: ") 
+    tratamiento = input("Tratamiento: ") 
+    costo = input("Costo: ") 
+
+    try:
+        with open('consultas.csv', 'x', newline='') as archivo:
+            escritor = csv.writer(archivo)
+            escritor.writerow(["Codigo de consulta", "Codigo de mascota", "Fecha", "Motivo", "Diagnostico", "Tratamiento", "Costo"]) 
+    except FileExistsError:
+        pass
+
+    with open('consultas.csv', 'a', newline='') as archivo:
+        escritor = csv.writer(archivo)
+        escritor.writerow([cod_consulta, cod_mascota, fecha, motivo, diagnostico, tratamiento, costo])
+    
+    print("Consulta guardada.")
